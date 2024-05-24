@@ -1,0 +1,57 @@
+{
+	"info": {
+		"_postman_id": "ec4f876c-4690-481a-a98b-4175d44c795d",
+		"name": "login",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2699813",
+		"_collection_link": "https://qacoders-postman-treinamento.postman.co/workspace/QA-SOLIDARIO~3a0056ea-c53f-4830-85f9-5502112735e5/collection/2699813-ec4f876c-4690-481a-a98b-4175d44c795d?action=share&source=collection_link&creator=2699813"
+	},
+	"item": [
+		{
+			"name": "login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check Name is true\", function(){\r",
+							"    pm.expect(pm.variables.get(\"Email\")).to.eql(JSON.parse(responseBody).user.mail)\r",
+							"})"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"mail\": \"{{Email}}\",\r\n    \"password\": \"{{Password}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/login",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
